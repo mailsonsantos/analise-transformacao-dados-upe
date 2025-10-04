@@ -1,0 +1,13 @@
+# Ignore project config which may contain local/secret settings
+project-config.json
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Excel and data files (optional)
+#*.xlsx
+#*.csv
