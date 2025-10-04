@@ -52,3 +52,38 @@ docker-compose down
     *   **Linux/macOS:** Navegue até a pasta `apache-hop` e execute `./hop-gui.sh`.
 *   **Metabase:**
     *   Com o ambiente Docker iniciado (passo `docker-compose up -d`), acesse [http://localhost:3000](http://localhost:3000) no seu navegador.
+
+## Restaurando os dados (Dados.zip)
+
+Para economizar espaço no repositório e evitar múltiplos binários grandes, a pasta `Dados/` foi compactada em `Dados.zip` e a pasta extraída foi removida do controle de versão. O repositório inclui `Dados.zip` e o diretório `Dados/` está listado em `.gitignore`.
+
+Para restaurar os dados localmente após clonar o repositório, execute:
+
+Linux / macOS:
+
+```bash
+unzip Dados.zip -d .
+```
+
+Windows (PowerShell):
+
+```powershell
+Expand-Archive -LiteralPath .\Dados.zip -DestinationPath . -Force
+```
+
+Após descompactar, você terá novamente a pasta `Dados/` com os arquivos necessários para a aula.
+
+Observação sobre arquivos grandes
+
+Se preferir não manter arquivos grandes no histórico do Git, considere usar Git LFS (Large File Storage). Exemplo de passos rápidos:
+
+```bash
+git lfs install
+git lfs track "Dados/*.csv"
+git add .gitattributes
+git commit -m "Track large data files with Git LFS"
+```
+
+Migrar arquivos já comitados para LFS requer passos adicionais (e.g. `git lfs migrate import --include="Dados/recife-dados-despesas-2023.csv"`) e deve ser feito com cuidado, pois reescreve o histórico.
+
+Se quiser que eu configure Git LFS e migre o(s) arquivo(s) grandes para LFS, eu posso fazer isso por você.
