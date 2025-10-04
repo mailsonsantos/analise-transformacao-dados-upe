@@ -109,3 +109,13 @@ ECHO " 2. Volte para esta pasta em um terminal e execute:"
 ECHO "    docker-compose up -d"
 ECHO " 3. Para usar o Hop, execute ./hop-gui.sh na pasta apache-hop."
 echo
+
+# --- Descompactar Dados.zip se presente ---
+if [ -f "Dados.zip" ]; then
+  echo "\n[+] Encontrado 'Dados.zip' — descompactando para ./Dados ..."
+  unzip -q Dados.zip -d .
+  echo "[+] Descompactacao concluida."
+else
+  echo "[i] Arquivo 'Dados.zip' nao encontrado; nada a descompactar."
+fi
+

@@ -2,7 +2,7 @@
 setlocal
 
 echo =======================================================================
-echo            Configurador de Ambiente - Processamento de Dados
+echo            Configurador de Ambiente - Análise e Transformação de Dados
 echo =======================================================================
 echo.
 echo Este script ira baixar e configurar as ferramentas necessarias para a aula.
@@ -75,3 +75,17 @@ echo.
 
 endlocal
 pause
+
+:: --- Descompactar Dados.zip se presente ---
+if exist "Dados.zip" (
+    echo.
+    echo [^+] Encontrado 'Dados.zip' - descompactando para .\Dados ...
+    powershell -Command "Expand-Archive -LiteralPath 'Dados.zip' -DestinationPath '.' -Force"
+    if %errorlevel% equ 0 (
+        echo [^+] Descompactacao concluida.
+    ) else (
+        echo [!] Falha ao descompactar Dados.zip. Verifique se o PowerShell esta disponivel.
+    )
+) else (
+    echo [i] Arquivo 'Dados.zip' nao encontrado; nada a descompactar.
+)

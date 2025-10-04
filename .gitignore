@@ -9,5 +9,9 @@ __pycache__/
 *.py[cod]
 
 # Excel and data files (optional)
+# Prevent checking in the extracted data folder (we keep compressed Dados.zip in repo)
+Dados/
+
+# Uncomment if you want to ignore raw spreadsheets and csvs as well
 #*.xlsx
 #*.csv
